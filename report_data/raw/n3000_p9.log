@@ -1,0 +1,61 @@
+[master][[34747,1],2][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[master][[34747,1],2][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[master][[34747,1],1][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[master][[34747,1],1][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[master][[34747,1],0][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[master][[34747,1],0][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave1][[34747,1],6][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave2][[34747,1],3][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave2][[34747,1],3][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave1][[34747,1],6][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave2][[34747,1],4][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave2][[34747,1],4][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave1][[34747,1],7][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave1][[34747,1],7][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave2][[34747,1],5][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave2][[34747,1],5][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave1][[34747,1],8][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave1][[34747,1],8][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+Project context:
+  Algorithm: SUMMA parallel matrix multiplication.
+  Parallelism level: data parallelism.
+  Decomposition: two-dimensional block data decomposition.
+  Mapping: q x q process grid; each rank owns an N/q x N/q block.
+  Communication: blocking MPI point-to-point for scatter/gather and MPI_Bcast for SUMMA panels.
+  Topology: logical 2D Cartesian grid with row and column communicators.
+  Load balance: equal-size matrix blocks when N is divisible by q.
+
+SUMMA completed
+  matrix_size: 3000 x 3000
+  processes: 9
+  process_grid: 3 x 3
+  block_size_per_process: 1000 x 1000
+  init_mode: pattern
+  verification_error: -1.000000e+00
+  checksum: 647999964030.000000
+  total_time_with_communication_max: 7.720188 seconds
+  compute_time_without_communication_max: 3.159229 seconds
+  communication_time_max: 4.836249 seconds
+  idle_time_max: 0.720822 seconds
+  load_imbalance_by_idle_gap: 9.19%
+  bytes_sent_total: 480000000
+  bytes_received_total: 480000000
+  load_balance_status: acceptable_under_25_percent
+kind,prefix,n,processes,grid,block,init,verify_error,checksum,total_max,compute_max,comm_max,idle_max,imbalance_percent,bytes_sent,bytes_received
+summary,n3000_p9,3000,9,3,1000,pattern,-1.000000000000e+00,647999964030.000000000000,7.720188267000,3.159228663000,4.836249114000,0.720822078000,9.192975,480000000,480000000
+kind,prefix,rank,grid_rank,grid_row,grid_col,local_rows,local_cols,total,compute,communication,distribution,broadcast,gather,idle,bytes_sent,bytes_received
+rank,n3000_p9,0,0,0,0,1000,1000,7.719628630000,2.872272447000,4.836249114000,1.351438883000,2.763674344000,0.721135887000,0.011107069000,160000000,96000000
+rank,n3000_p9,1,1,0,1,1000,1000,7.719649789000,3.068327058000,3.930500653000,0.098150724000,3.794260607000,0.038089322000,0.720822078000,40000000,48000000
+rank,n3000_p9,2,2,0,2,1000,1000,7.719630829000,3.046450650000,3.957791080000,0.115732845000,3.792482194000,0.049576041000,0.715389099000,40000000,48000000
+rank,n3000_p9,3,3,1,0,1000,1000,7.720187704000,2.944065105000,4.132129425000,0.319611522000,3.717351322000,0.095166581000,0.643993174000,40000000,48000000
+rank,n3000_p9,4,4,1,1,1000,1000,7.719923567000,2.942341042000,4.234284393000,0.573438032000,3.430653789000,0.230192572000,0.543298132000,40000000,48000000
+rank,n3000_p9,5,5,1,2,1000,1000,7.720188267000,2.899514231000,4.417406934000,0.739977032000,3.358951108000,0.318478794000,0.403267102000,40000000,48000000
+rank,n3000_p9,6,6,2,0,1000,1000,7.719761130000,3.003988491000,4.425181192000,0.954544910000,2.842947846000,0.627688436000,0.290591447000,40000000,48000000
+rank,n3000_p9,7,7,2,1,1000,1000,7.719670413000,3.045570638000,4.546289584000,1.155303969000,2.751195808000,0.639789807000,0.127810191000,40000000,48000000
+rank,n3000_p9,8,8,2,2,1000,1000,7.719765357000,3.159228663000,4.532556248000,1.361643032000,2.455272834000,0.715640382000,0.027980446000,40000000,48000000
+
+Suggested 4-person implementation split:
+  Part 1: MPI/SUMMA kernel and 2D process-grid mapping.
+  Part 2: Matrix generation, serial baseline, and correctness verification.
+  Part 3: Timing, communication/computation metrics, and load-balance analysis.
+  Part 4: CLI, experiment scripts, CSV outputs, charts, and final report.

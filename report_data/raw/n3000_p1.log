@@ -1,0 +1,35 @@
+Project context:
+  Algorithm: SUMMA parallel matrix multiplication.
+  Parallelism level: data parallelism.
+  Decomposition: two-dimensional block data decomposition.
+  Mapping: q x q process grid; each rank owns an N/q x N/q block.
+  Communication: blocking MPI point-to-point for scatter/gather and MPI_Bcast for SUMMA panels.
+  Topology: logical 2D Cartesian grid with row and column communicators.
+  Load balance: equal-size matrix blocks when N is divisible by q.
+
+SUMMA completed
+  matrix_size: 3000 x 3000
+  processes: 1
+  process_grid: 1 x 1
+  block_size_per_process: 3000 x 3000
+  init_mode: pattern
+  verification_error: -1.000000e+00
+  checksum: 647999964030.000000
+  total_time_with_communication_max: 12.008581 seconds
+  compute_time_without_communication_max: 11.777817 seconds
+  communication_time_max: 0.185017 seconds
+  idle_time_max: 0.045746 seconds
+  load_imbalance_by_idle_gap: 0.00%
+  bytes_sent_total: 0
+  bytes_received_total: 0
+  load_balance_status: acceptable_under_25_percent
+kind,prefix,n,processes,grid,block,init,verify_error,checksum,total_max,compute_max,comm_max,idle_max,imbalance_percent,bytes_sent,bytes_received
+summary,n3000_p1,3000,1,1,3000,pattern,-1.000000000000e+00,647999964030.000000000000,12.008580553000,11.777817172000,0.185017007000,0.045746374000,0.000000,0,0
+kind,prefix,rank,grid_rank,grid_row,grid_col,local_rows,local_cols,total,compute,communication,distribution,broadcast,gather,idle,bytes_sent,bytes_received
+rank,n3000_p1,0,0,0,0,3000,3000,12.008580553000,11.777817172000,0.185017007000,0.166190687000,0.000001517000,0.018824803000,0.045746374000,0,0
+
+Suggested 4-person implementation split:
+  Part 1: MPI/SUMMA kernel and 2D process-grid mapping.
+  Part 2: Matrix generation, serial baseline, and correctness verification.
+  Part 3: Timing, communication/computation metrics, and load-balance analysis.
+  Part 4: CLI, experiment scripts, CSV outputs, charts, and final report.
