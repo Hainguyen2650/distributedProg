@@ -1,0 +1,42 @@
+[master][[27759,1],0][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[master][[27759,1],1][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave2][[27759,1],2][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+[slave2][[27759,1],3][../../../../../../opal/mca/btl/tcp/btl_tcp_proc.c:266:mca_btl_tcp_proc_create_interface_graph] Unable to find reachable pairing between local and remote interfaces
+Project context:
+  Algorithm: SUMMA parallel matrix multiplication.
+  Parallelism level: data parallelism.
+  Decomposition: two-dimensional block data decomposition.
+  Mapping: q x q process grid; each rank owns an N/q x N/q block.
+  Communication: blocking MPI point-to-point for scatter/gather and MPI_Bcast for SUMMA panels.
+  Topology: logical 2D Cartesian grid with row and column communicators.
+  Load balance: equal-size matrix blocks when N is divisible by q.
+
+SUMMA completed
+  matrix_size: 6000 x 6000
+  processes: 4
+  process_grid: 2 x 2
+  block_size_per_process: 3000 x 3000
+  init_mode: pattern
+  verification_error: -1.000000e+00
+  checksum: 5183999723970.000000
+  total_time_with_communication_max: 63.054117 seconds
+  compute_time_without_communication_max: 45.187377 seconds
+  communication_time_max: 30.479243 seconds
+  idle_time_max: 12.060639 seconds
+  load_imbalance_by_idle_gap: 19.03%
+  bytes_sent_total: 1224000000
+  bytes_received_total: 1224000000
+  load_balance_status: acceptable_under_25_percent
+kind,prefix,n,processes,grid,block,init,verify_error,checksum,total_max,compute_max,comm_max,idle_max,imbalance_percent,bytes_sent,bytes_received
+summary,n6000_p4,6000,4,2,3000,pattern,-1.000000000000e+00,5183999723970.000000000000,63.054117341000,45.187377180000,30.479242956000,12.060638835000,19.028755,1224000000,1224000000
+kind,prefix,rank,grid_rank,grid_row,grid_col,local_rows,local_cols,total,compute,communication,distribution,broadcast,gather,idle,bytes_sent,bytes_received
+rank,n6000_p4,0,0,0,0,3000,3000,63.053717945000,32.512249487000,30.479242956000,4.157837387000,14.247791551000,12.073614018000,0.062225502000,576000000,360000000
+rank,n6000_p4,1,1,0,1,3000,3000,63.053760176000,31.642304026000,19.350817315000,0.372415435000,18.698794169000,0.279607711000,12.060638835000,216000000,288000000
+rank,n6000_p4,2,2,1,0,3000,3000,63.054117341000,45.187377180000,15.466498016000,2.404525554000,11.469375395000,1.592597067000,2.400242145000,216000000,288000000
+rank,n6000_p4,3,3,1,1,3000,3000,63.054115911000,44.859101566000,18.116257376000,4.157551008000,10.087764497000,3.870941871000,0.078756969000,216000000,288000000
+
+Suggested 4-person implementation split:
+  Part 1: MPI/SUMMA kernel and 2D process-grid mapping.
+  Part 2: Matrix generation, serial baseline, and correctness verification.
+  Part 3: Timing, communication/computation metrics, and load-balance analysis.
+  Part 4: CLI, experiment scripts, CSV outputs, charts, and final report.
