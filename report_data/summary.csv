@@ -1,0 +1,2 @@
+kind,prefix,n,processes,grid,block,init,verify_error,checksum,total_max,compute_max,comm_max,idle_max,imbalance_percent,bytes_sent,bytes_received
+summary,n32_p4,32,4,2,16,pattern,0.000000000000e+00,786595.000000000000,0.000105450000,0.000003298000,0.000084630000,0.000033257000,20.928402,34816,34816

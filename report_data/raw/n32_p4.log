@@ -8,25 +8,28 @@ Project context:
   Load balance: equal-size matrix blocks when N is divisible by q.
 
 SUMMA completed
-  matrix_size: 64 x 64
-  processes: 1
-  process_grid: 1 x 1
-  block_size_per_process: 64 x 64
+  matrix_size: 32 x 32
+  processes: 4
+  process_grid: 2 x 2
+  block_size_per_process: 16 x 16
   init_mode: pattern
   verification_error: 0.000000e+00
-  checksum: 6288756.000000
-  total_time_with_communication_max: 0.000167 seconds
-  compute_time_without_communication_max: 0.000108 seconds
-  communication_time_max: 0.000057 seconds
-  idle_time_max: 0.000003 seconds
-  load_imbalance_by_idle_gap: 0.00%
-  bytes_sent_total: 0
-  bytes_received_total: 0
+  checksum: 786595.000000
+  total_time_with_communication_max: 0.000105 seconds
+  compute_time_without_communication_max: 0.000003 seconds
+  communication_time_max: 0.000085 seconds
+  idle_time_max: 0.000033 seconds
+  load_imbalance_by_idle_gap: 20.93%
+  bytes_sent_total: 34816
+  bytes_received_total: 34816
   load_balance_status: acceptable_under_25_percent
 kind,prefix,n,processes,grid,block,init,verify_error,checksum,total_max,compute_max,comm_max,idle_max,imbalance_percent,bytes_sent,bytes_received
-summary,correctness_np1_n64,64,1,1,64,pattern,0.000000000000e+00,6288756.000000000000,0.000167031000,0.000107957000,0.000056563000,0.000002511000,0.000000,0,0
+summary,n32_p4,32,4,2,16,pattern,0.000000000000e+00,786595.000000000000,0.000105450000,0.000003298000,0.000084630000,0.000033257000,20.928402,34816,34816
 kind,prefix,rank,grid_rank,grid_row,grid_col,local_rows,local_cols,total,compute,communication,distribution,broadcast,gather,idle,bytes_sent,bytes_received
-rank,correctness_np1_n64,0,0,0,0,64,64,0.000167031000,0.000107957000,0.000056563000,0.000054019000,0.000000386000,0.000002158000,0.000002511000,0,0
+rank,n32_p4,0,0,0,0,16,16,0.000098865000,0.000003047000,0.000084630000,0.000043521000,0.000024219000,0.000016890000,0.000011188000,16384,10240
+rank,n32_p4,1,1,0,1,16,16,0.000096588000,0.000003097000,0.000081884000,0.000019971000,0.000054136000,0.000007777000,0.000011607000,6144,8192
+rank,n32_p4,2,2,1,0,16,16,0.000092455000,0.000003298000,0.000055900000,0.000007583000,0.000044738000,0.000003579000,0.000033257000,6144,8192
+rank,n32_p4,3,3,1,1,16,16,0.000105450000,0.000003122000,0.000070909000,0.000038444000,0.000028422000,0.000004043000,0.000031419000,6144,8192
 
 Suggested 4-person implementation split:
   Part 1: MPI/SUMMA kernel and 2D process-grid mapping.

@@ -1,6 +1,0 @@
-build/
-.git/
-hello
-summa
-mpi_comm_test
-*.o
