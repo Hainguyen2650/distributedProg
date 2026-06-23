@@ -1,0 +1,8 @@
+Warning: Permanently added '172.20.10.7' (ED25519) to the list of known hosts.
+Warning: Permanently added '172.20.10.6' (ED25519) to the list of known hosts.
+5,ubuntu-slave2
+4,ubuntu-slave2
+0,ubuntu-master
+1,ubuntu-master
+2,ubuntu-slave1
+3,ubuntu-slave1

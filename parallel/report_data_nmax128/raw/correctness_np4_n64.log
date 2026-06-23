@@ -1,0 +1,40 @@
+Warning: Permanently added '172.20.10.7' (ED25519) to the list of known hosts.
+Warning: Permanently added '172.20.10.6' (ED25519) to the list of known hosts.
+Project context:
+  Algorithm: SUMMA parallel matrix multiplication.
+  Parallelism level: data parallelism.
+  Decomposition: two-dimensional block data decomposition.
+  Mapping: q x q process grid; each rank owns an N/q x N/q block.
+  Communication: blocking MPI point-to-point for scatter/gather and MPI_Bcast for SUMMA panels.
+  Topology: logical 2D Cartesian grid with row and column communicators.
+  Load balance: equal-size matrix blocks when N is divisible by q.
+
+SUMMA completed
+  matrix_size: 64 x 64
+  processes: 4
+  process_grid: 2 x 2
+  block_size_per_process: 32 x 32
+  init_mode: pattern
+  verification_error: 0.000000e+00
+  checksum: 6288756.000000
+  total_time_with_communication_max: 0.000248 seconds
+  compute_time_without_communication_max: 0.000025 seconds
+  communication_time_max: 0.000217 seconds
+  idle_time_max: 0.000048 seconds
+  load_imbalance_by_idle_gap: 16.79%
+  bytes_sent_total: 139264
+  bytes_received_total: 139264
+  load_balance_status: acceptable_under_25_percent
+kind,prefix,n,processes,grid,block,init,verify_error,checksum,total_max,compute_max,comm_max,idle_max,imbalance_percent,bytes_sent,bytes_received
+summary,correctness_np4_n64,64,4,2,32,pattern,0.000000000000e+00,6288756.000000000000,0.000247648000,0.000024608000,0.000217215000,0.000047739000,16.785922,139264,139264
+kind,prefix,rank,grid_rank,grid_row,grid_col,local_rows,local_cols,total,compute,communication,distribution,broadcast,gather,idle,bytes_sent,bytes_received
+rank,correctness_np4_n64,0,0,0,0,32,32,0.000247376000,0.000023992000,0.000217215000,0.000107551000,0.000068094000,0.000041570000,0.000006169000,65536,40960
+rank,correctness_np4_n64,1,1,0,1,32,32,0.000247648000,0.000023935000,0.000175974000,0.000061131000,0.000109290000,0.000005553000,0.000047739000,24576,32768
+rank,correctness_np4_n64,2,2,1,0,32,32,0.000208664000,0.000024608000,0.000171710000,0.000037145000,0.000111453000,0.000023112000,0.000012346000,24576,32768
+rank,correctness_np4_n64,3,3,1,1,32,32,0.000211034000,0.000023093000,0.000169690000,0.000051898000,0.000108325000,0.000009467000,0.000018251000,24576,32768
+
+Suggested 4-person implementation split:
+  Part 1: MPI/SUMMA kernel and 2D process-grid mapping.
+  Part 2: Matrix generation, serial baseline, and correctness verification.
+  Part 3: Timing, communication/computation metrics, and load-balance analysis.
+  Part 4: CLI, experiment scripts, CSV outputs, charts, and final report.

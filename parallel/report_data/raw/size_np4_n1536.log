@@ -1,0 +1,38 @@
+Project context:
+  Algorithm: SUMMA parallel matrix multiplication.
+  Parallelism level: data parallelism.
+  Decomposition: two-dimensional block data decomposition.
+  Mapping: q x q process grid; each rank owns an N/q x N/q block.
+  Communication: blocking MPI point-to-point for scatter/gather and MPI_Bcast for SUMMA panels.
+  Topology: logical 2D Cartesian grid with row and column communicators.
+  Load balance: equal-size matrix blocks when N is divisible by q.
+
+SUMMA completed
+  matrix_size: 1536 x 1536
+  processes: 4
+  process_grid: 2 x 2
+  block_size_per_process: 768 x 768
+  init_mode: pattern
+  verification_error: -1.000000e+00
+  checksum: 86972974089.000000
+  total_time_with_communication_max: 1.623841 seconds
+  compute_time_without_communication_max: 1.378401 seconds
+  communication_time_max: 0.544460 seconds
+  idle_time_max: 0.145586 seconds
+  load_imbalance_by_idle_gap: 8.81%
+  bytes_sent_total: 80216064
+  bytes_received_total: 80216064
+  load_balance_status: acceptable_under_25_percent
+kind,prefix,n,processes,grid,block,init,verify_error,checksum,total_max,compute_max,comm_max,idle_max,imbalance_percent,bytes_sent,bytes_received
+summary,size_np4_n1536,1536,4,2,768,pattern,-1.000000000000e+00,86972974089.000000000000,1.623841210000,1.378401205000,0.544459992000,0.145586032000,8.813958,80216064,80216064
+kind,prefix,rank,grid_rank,grid_row,grid_col,local_rows,local_cols,total,compute,communication,distribution,broadcast,gather,idle,bytes_sent,bytes_received
+rank,size_np4_n1536,0,0,0,0,768,768,1.623823220000,1.071149196000,0.544459992000,0.197557528000,0.111042873000,0.235859591000,0.008214032000,37748736,23592960
+rank,size_np4_n1536,1,1,0,1,768,768,1.621551790000,1.266031867000,0.209933891000,0.082599490000,0.123503700000,0.003830701000,0.145586032000,14155776,18874368
+rank,size_np4_n1536,2,2,1,0,768,768,1.611293250000,1.378401205000,0.215910333000,0.140371753000,0.074917624000,0.000620956000,0.016981712000,14155776,18874368
+rank,size_np4_n1536,3,3,1,1,768,768,1.623841210000,1.281592803000,0.339787057000,0.194705982000,0.123272735000,0.021808340000,0.002461350000,14155776,18874368
+
+Suggested 4-person implementation split:
+  Part 1: MPI/SUMMA kernel and 2D process-grid mapping.
+  Part 2: Matrix generation, serial baseline, and correctness verification.
+  Part 3: Timing, communication/computation metrics, and load-balance analysis.
+  Part 4: CLI, experiment scripts, CSV outputs, charts, and final report.

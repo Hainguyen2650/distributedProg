@@ -1,0 +1,45 @@
+Warning: Permanently added '172.20.10.7' (ED25519) to the list of known hosts.
+Warning: Permanently added '172.20.10.6' (ED25519) to the list of known hosts.
+Project context:
+  Algorithm: SUMMA parallel matrix multiplication.
+  Parallelism level: data parallelism.
+  Decomposition: two-dimensional block data decomposition.
+  Mapping: q x q process grid; each rank owns an N/q x N/q block.
+  Communication: blocking MPI point-to-point for scatter/gather and MPI_Bcast for SUMMA panels.
+  Topology: logical 2D Cartesian grid with row and column communicators.
+  Load balance: equal-size matrix blocks when N is divisible by q.
+
+SUMMA completed
+  matrix_size: 126 x 126
+  processes: 9
+  process_grid: 3 x 3
+  block_size_per_process: 42 x 42
+  init_mode: pattern
+  verification_error: 0.000000e+00
+  checksum: 48005496.000000
+  total_time_with_communication_max: 0.004995 seconds
+  compute_time_without_communication_max: 0.000539 seconds
+  communication_time_max: 0.002444 seconds
+  idle_time_max: 0.002529 seconds
+  load_imbalance_by_idle_gap: 49.82%
+  bytes_sent_total: 846720
+  bytes_received_total: 846720
+  load_balance_status: imbalance_above_25_percent
+kind,prefix,n,processes,grid,block,init,verify_error,checksum,total_max,compute_max,comm_max,idle_max,imbalance_percent,bytes_sent,bytes_received
+summary,correctness_np9_n126,126,9,3,42,pattern,0.000000000000e+00,48005496.000000000000,0.004995394000,0.000539226000,0.002443889000,0.002528943000,49.816171,846720,846720
+kind,prefix,rank,grid_rank,grid_row,grid_col,local_rows,local_cols,total,compute,communication,distribution,broadcast,gather,idle,bytes_sent,bytes_received
+rank,correctness_np9_n126,0,0,0,0,42,42,0.004995394000,0.000068598000,0.002397853000,0.000961268000,0.000950529000,0.000486056000,0.002528943000,282240,169344
+rank,correctness_np9_n126,1,1,0,1,42,42,0.003837506000,0.000068576000,0.002057845000,0.000229648000,0.001623941000,0.000204256000,0.001711085000,70560,84672
+rank,correctness_np9_n126,2,2,0,2,42,42,0.003642222000,0.000068537000,0.001953922000,0.000247405000,0.001403858000,0.000302659000,0.001619763000,70560,84672
+rank,correctness_np9_n126,3,3,1,0,42,42,0.002644248000,0.000068733000,0.002443889000,0.000747561000,0.001370527000,0.000325801000,0.000131626000,70560,84672
+rank,correctness_np9_n126,4,4,1,1,42,42,0.002568203000,0.000070080000,0.002439072000,0.000777306000,0.001352287000,0.000309479000,0.000059051000,70560,84672
+rank,correctness_np9_n126,5,5,1,2,42,42,0.002637769000,0.000539226000,0.001984418000,0.000836622000,0.000996671000,0.000151125000,0.000114125000,70560,84672
+rank,correctness_np9_n126,6,6,2,0,42,42,0.002562320000,0.000102325000,0.002419566000,0.000877190000,0.001494743000,0.000047633000,0.000040429000,70560,84672
+rank,correctness_np9_n126,7,7,2,1,42,42,0.003676093000,0.000068810000,0.002443120000,0.000932453000,0.001437940000,0.000072727000,0.001164163000,70560,84672
+rank,correctness_np9_n126,8,8,2,2,42,42,0.002654678000,0.000090747000,0.002407747000,0.000968915000,0.001334875000,0.000103957000,0.000156184000,70560,84672
+
+Suggested 4-person implementation split:
+  Part 1: MPI/SUMMA kernel and 2D process-grid mapping.
+  Part 2: Matrix generation, serial baseline, and correctness verification.
+  Part 3: Timing, communication/computation metrics, and load-balance analysis.
+  Part 4: CLI, experiment scripts, CSV outputs, charts, and final report.
