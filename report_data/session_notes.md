@@ -52,10 +52,11 @@ The following runs completed successfully with `--no-verify`:
 | 6000 | 1 | 113.105301 | 112.194917 | 0.734363 | 1.000000 |
 | 6000 | 4 | 63.054117 | 45.187377 | 30.479243 | 1.793781 |
 | 6000 | 9 | 45.457886 | 27.794446 | 19.348266 | 2.488134 |
-| 9000 | 4 | 196.829825 | 176.403115 | 94.422151 | N/A |
-| 9000 | 9 | 133.108607 | 100.813929 | 65.785121 | N/A |
+| 9000 | 1 | 368.380470 | 360.656487 | 7.368594 | 1.000000 |
+| 9000 | 4 | 196.829825 | 176.403115 | 94.422151 | 1.871568 |
+| 9000 | 9 | 133.108607 | 100.813929 | 65.785121 | 2.767519 |
 
-`N=9000, P=1` was attempted but excluded because the single-rank memory footprint is too high for the available RAM. Without the `P=1` baseline, speedup for `N=9000` is not reported.
+`N=9000, P=1` requires more memory than the original 6 GB setup, but completed successfully after moving to a 16 GB single-machine baseline environment.
 
 Chart-ready speedup data is stored in:
 
@@ -74,6 +75,7 @@ report_data/raw/n3000_p9.log
 report_data/raw/n6000_p1.log
 report_data/raw/n6000_p4.log
 report_data/raw/n6000_p9.log
+report_data/raw/n9000_p1.log
 report_data/raw/n9000_p4.log
 report_data/raw/n9000_p9.log
 ```
@@ -93,4 +95,4 @@ Conclusion: `P=16` was excluded because the issue is in the multi-node Open MPI 
 
 ## Report Recommendation
 
-Use `P=1,4,9` for the `N=3000` and `N=6000` speedup charts. Use `N=9000, P=4,9` for the large-input runtime and per-rank load-balance discussion, but do not calculate `N=9000` speedup without a valid `P=1` baseline. Discuss `P=16` as a cluster runtime limitation. The `P=9` runs are the best stable distributed results for the available machines.
+Use `P=1,4,9` for the speedup charts at `N=3000`, `N=6000`, and `N=9000`. Discuss `P=16` as a cluster runtime limitation. The `P=9` runs are the best stable distributed results for the available machines.
